@@ -13,7 +13,7 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+        return Group::all();
     }
 
     /**
@@ -21,7 +21,8 @@ class GroupController extends Controller
      */
     public function store(StoreGroupRequest $request)
     {
-        //
+        Group::create($request->validated());
+        return response()->json(['message' => 'Group created successfully'], 201);
     }
 
     /**
@@ -29,7 +30,7 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
-        //
+        return $group;
     }
 
     /**
@@ -37,7 +38,8 @@ class GroupController extends Controller
      */
     public function update(UpdateGroupRequest $request, Group $group)
     {
-        //
+        $group->update($request->validated());
+        return response()->json(['message' => 'Group updated successfully'], 200);
     }
 
     /**
@@ -45,6 +47,7 @@ class GroupController extends Controller
      */
     public function destroy(Group $group)
     {
-        //
+        $group->delete();
+        return response()->json(['message' => 'Group deleted successfully'], 200);
     }
 }
