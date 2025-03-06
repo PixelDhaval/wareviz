@@ -18,6 +18,10 @@ use App\Models\User;
 
 Route::post('/login', [UserController::class, 'login']);
 
+Route::get('/test', function(){
+    return response()->json(['message' => 'Hello World']);
+});
+
 Route::group(["middleware" => "auth:sanctum"], function () {
     Route::apiResource("cargos", CargoController::class);
     Route::apiResource("godowns", GodownController::class);
