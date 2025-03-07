@@ -20,7 +20,11 @@ class PartyController extends Controller
         $filters = $request->input('filters', []);
         foreach ($filters as $key => $value) {
             if ($value) {
-                $query->where($key, 'LIKE', "%$value%");
+                if($key == 'state_id'){
+                    $query->where($key, "=", $value);
+                } else {
+                    $query->where($key, 'LIKE', "%$value%");
+                } 
             }
         }
 
