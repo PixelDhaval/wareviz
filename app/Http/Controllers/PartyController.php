@@ -39,7 +39,10 @@ class PartyController extends Controller
         $perPage = $request->input('perPage', 10); // Default 10 per page
         $parties = $query->paginate($perPage);
 
-        return response()->json($parties);
+        return response()->json([
+            "request" => $request->all(),
+            'parties' => $parties
+        ]);
     }
 
     /**
