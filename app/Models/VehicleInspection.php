@@ -5,16 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WeighReceipt extends Model
+class VehicleInspection extends Model
 {
-    /** @use HasFactory<\Database\Factories\WeighReceiptFactory> */
+    /** @use HasFactory<\Database\Factories\VehicleInspectionFactory> */
     use HasFactory;
 
     protected $fillable = [
         'vehicle_movement_id',
-        'weigh_receipt_no',
-        'weigh_receipt_date',
-        'weigh_bridge',
+        'inspection_no',
+        'inspection_date',
+        'inspection_type',
+        'inspection_by',
+        'inspection_result',
+        'remark',
     ];
 
     public function vehicleMovement(){

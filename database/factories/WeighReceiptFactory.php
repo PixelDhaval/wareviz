@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\VehicleMovement;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class WeighReceiptFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            "vehicle_movement_id" => VehicleMovement::inRandomOrder()->first()->id,
+            "weigh_receipt_no" => $this->faker->bothify('##??###??'),
+            "weigh_receipt_date" => $this->faker->dateTimeBetween('-1 year', 'now'),
+            "weigh_bridge" => $this->faker->name(),
         ];
     }
 }

@@ -14,6 +14,11 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VehicleMovementController;
+use App\Http\Controllers\CargoDetailController;
+use App\Http\Controllers\WeighReceiptController;
+use App\Http\Controllers\VehicleImageController;
+use App\Http\Controllers\VehicleInspectionController;
 use App\Models\User;
 
 Route::post('/login', [UserController::class, 'login']);
@@ -28,4 +33,9 @@ Route::group(["middleware" => "auth:sanctum"], function () {
     Route::apiResource("states", StateController::class);
     Route::apiResource("parties", PartyController::class);
     Route::apiResource("groups", GroupController::class);
+    Route::apiResource("vehicle-movements", VehicleMovementController::class);
+    Route::apiResource("cargo-details", CargoDetailController::class);
+    Route::apiResource("weigh-receipts", WeighReceiptController::class);
+    Route::apiResource("vehicle-images", VehicleImageController::class);
+    Route::apiResource("vehicle-inspections", VehicleInspectionController::class);
 });
