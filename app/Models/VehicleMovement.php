@@ -62,4 +62,8 @@ class VehicleMovement extends Model
     public function vehicleImage(){
         return $this->hasMany(VehicleImage::class);
     }
+
+    public function vehicleInspection(){
+        return $this->hasMany(VehicleInspection::class);
+    }
 }

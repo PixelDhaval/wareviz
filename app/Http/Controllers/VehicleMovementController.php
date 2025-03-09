@@ -15,7 +15,7 @@ class VehicleMovementController extends Controller
     {
         return response()->json([
             'status' => 200,
-            'data' => VehicleMovement::with('party', 'supplier', 'cargo', 'godown', 'cargoDetail', 'weighReceipt', 'vehicleImage')->get(),
+            'data' => VehicleMovement::with('party', 'supplier', 'cargo', 'godown', 'cargoDetail', 'weighReceipt', 'vehicleImage', 'vehicleInspection')->get(),
         ]);
     }
 
@@ -36,7 +36,7 @@ class VehicleMovementController extends Controller
      */
     public function show(VehicleMovement $vehicleMovement)
     {
-        return response()->json($vehicleMovement->load('party', 'supplier', 'cargo', 'godown', 'cargoDetail', 'weighReceipt', 'vehicleImage'));
+        return response()->json($vehicleMovement->load('party', 'supplier', 'cargo', 'godown', 'cargoDetail', 'weighReceipt', 'vehicleImage', 'vehicleInspection'));
     }
 
     /**
