@@ -90,7 +90,7 @@ class GodownController extends Controller
     {
         $query = Godown::query();
         $query->where('godown_no' , 'LIKE', "%{$request->search}%");
-        $query->where('godown_name' , 'LIKE', "%{$request->search}%");
+        $query->orWhere('godown_name' , 'LIKE', "%{$request->search}%");
         $cargos = $query->get();
         return response()->json($cargos);
     }
