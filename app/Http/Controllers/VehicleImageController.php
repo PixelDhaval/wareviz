@@ -14,7 +14,7 @@ class VehicleImageController extends Controller
      */
     public function index(Request $request)
     {
-        $query = VehicleImage::query()->with('state', 'group');
+        $query = VehicleImage::query()->with('vehicleMovement');
 
         // **Filtering**
         $filters = $request->input('filters', []);
