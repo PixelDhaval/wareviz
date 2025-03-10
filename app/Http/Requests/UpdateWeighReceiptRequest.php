@@ -22,7 +22,10 @@ class UpdateWeighReceiptRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "vehicle_movement_id" => "sometimes|integer",
+            "weigh_receipt_no" => "sometimes|nullable|string",
+            "weigh_receipt_date" => "sometimes|nullable|date",
+            "weigh_bridge" => "sometimes|nullable|string"
         ];
     }
 }

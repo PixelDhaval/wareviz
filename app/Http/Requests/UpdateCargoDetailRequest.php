@@ -22,7 +22,12 @@ class UpdateCargoDetailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "vehicle_movement_id" => "sometimes|integer",
+            "is_bulk" => "sometimes|nullable|boolean",
+            "bags_qty" => "sometimes|nullable|numeric",
+            "bags_weight" => "sometimes|nullable|numeric",
+            "total_weight" => "sometimes|nullable|numeric",
+            "bags_type" => "sometimes|nullable|string",
         ];
     }
 }

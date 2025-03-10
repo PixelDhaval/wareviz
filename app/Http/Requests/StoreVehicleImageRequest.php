@@ -22,7 +22,10 @@ class StoreVehicleImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "vehicle_movement_id" => "required|integer",
+            "image_path" => "required|string",
+            "remark" => "sometimes|nullable|string",
+            "uploaded_at" => "sometimes|nullable|datetime"
         ];
     }
 }

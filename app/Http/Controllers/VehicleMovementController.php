@@ -5,17 +5,47 @@ namespace App\Http\Controllers;
 use App\Models\VehicleMovement;
 use App\Http\Requests\StoreVehicleMovementRequest;
 use App\Http\Requests\UpdateVehicleMovementRequest;
+use Illuminate\Http\Request;
 
 class VehicleMovementController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $query = VehicleMovement::query()->with('party', 'supplier', 'cargo', 'godown', 'cargoDetail', 'weighReceipt', 'vehicleImage', 'vehicleInspection');
+
+        // **Filtering**
+        $filters = $request->input('filters', []);
+        foreach ($filters as $key => $value) {
+            if ($value) {
+                if($key == 'party_id' || $key == 'supplier_id' || $key == 'cargo_id' || $key == 'godown_id'){
+                    $query->where($key, "=", $value);
+                } else {
+                    $query->where($key, 'LIKE', "%$value%");
+                } 
+            }
+        }
+
+        // **Sorting & Ordering**
+        $sortBy = $request->input('sortBy', 'id'); // Default sorting column
+        $order = $request->input('order', 'asc');  // Default order
+
+        // Validate sorting inputs
+        if (!in_array($order, ['asc', 'desc'])) {
+            $order = 'asc';
+        }
+
+        $query->orderBy($sortBy, $order);
+
+        // **Pagination**
+        $perPage = $request->input('perPage', 10); // Default 10 per page
+        $parties = $query->paginate($perPage);
+
         return response()->json([
-            'status' => 200,
-            'data' => VehicleMovement::with('party', 'supplier', 'cargo', 'godown', 'cargoDetail', 'weighReceipt', 'vehicleImage', 'vehicleInspection')->get(),
+            "request" => $request->all(),
+            'parties' => $parties
         ]);
     }
 
