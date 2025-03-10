@@ -5,17 +5,47 @@ namespace App\Http\Controllers;
 use App\Models\WeighReceipt;
 use App\Http\Requests\StoreWeighReceiptRequest;
 use App\Http\Requests\UpdateWeighReceiptRequest;
+use Illuminate\Http\Request;
 
 class WeighReceiptController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $query = WeighReceipt::query()->with('vehicleMovement');
+
+        // **Filtering**
+        $filters = $request->input('filters', []);
+        foreach ($filters as $key => $value) {
+            if ($value) {
+                if($key == 'state_id'){
+                    $query->where($key, "=", $value);
+                } else {
+                    $query->where($key, 'LIKE', "%$value%");
+                } 
+            }
+        }
+
+        // **Sorting & Ordering**
+        $sortBy = $request->input('sortBy', 'id'); // Default sorting column
+        $order = $request->input('order', 'asc');  // Default order
+
+        // Validate sorting inputs
+        if (!in_array($order, ['asc', 'desc'])) {
+            $order = 'asc';
+        }
+
+        $query->orderBy($sortBy, $order);
+
+        // **Pagination**
+        $perPage = $request->input('perPage', 10); // Default 10 per page
+        $parties = $query->paginate($perPage);
+
         return response()->json([
-            'status' => 200,
-            'data' => WeighReceipt::with('vehicleMovement')->get(),
+            "request" => $request->all(),
+            'data' => $parties
         ]);
     }
 

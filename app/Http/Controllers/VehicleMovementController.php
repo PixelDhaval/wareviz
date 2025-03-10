@@ -45,7 +45,7 @@ class VehicleMovementController extends Controller
 
         return response()->json([
             "request" => $request->all(),
-            'parties' => $parties
+            'data' => $parties
         ]);
     }
 
