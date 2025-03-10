@@ -29,9 +29,12 @@ Route::get('/test', function(){
 
 Route::group(["middleware" => "auth:sanctum"], function () {
     Route::apiResource("cargos", CargoController::class);
+    Route::get('/get-all-cargos', [CargoController::class , 'getAllCargos']);
     Route::apiResource("godowns", GodownController::class);
+    Route::get('/get-all-godowns', [GodownController::class , 'getAllGodowns']);
     Route::apiResource("states", StateController::class);
     Route::apiResource("parties", PartyController::class);
+    Route::get('/get-all-parties', [PartyController::class , 'getAllParties']);
     Route::apiResource("groups", GroupController::class);
     Route::apiResource("vehicle-movements", VehicleMovementController::class);
     Route::apiResource("cargo-details", CargoDetailController::class);

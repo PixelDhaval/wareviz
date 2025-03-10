@@ -50,4 +50,6 @@ class GroupController extends Controller
         $group->delete();
         return response()->json(['message' => 'Group deleted successfully'], 200);
     }
+
+    
 }

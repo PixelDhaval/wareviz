@@ -93,4 +93,14 @@ class PartyController extends Controller
             'message' => 'Party Deleted Successfully',
         ]);
     }
+
+    public function getAllParties(Request $request)
+    {
+        $query = Party::query();
+        $query->where('legal_name' , 'LIKE', "%{$request->search}%");
+        $query->orWhere('trade_name' , 'LIKE', "%{$request->search}%");
+        $query->orWhere('gst' , 'LIKE', "%{$request->search}%");
+        $parties = $query->get();
+        return response()->json($parties);
+    }   
 }

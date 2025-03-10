@@ -85,4 +85,15 @@ class CargoController extends Controller
             'message' => 'Cargo Deleted Successfully'
         ]);
     }
+
+    /**
+     * Get all cargos
+     */
+    public function getAllCargos(Request $request)
+    {
+        $query = Cargo::query();
+        $query->where('cargo_name' , 'LIKE', "%{$request->search}%");
+        $cargos = $query->get();
+        return response()->json($cargos);
+    }
 }

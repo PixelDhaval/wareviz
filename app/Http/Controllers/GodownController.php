@@ -85,4 +85,13 @@ class GodownController extends Controller
             'message' => 'Godown Deleted Successfully',
         ]);
     }
+
+    public function getAllGodowns(Request $request)
+    {
+        $query = Godown::query();
+        $query->where('godown_no' , 'LIKE', "%{$request->search}%");
+        $query->where('godown_name' , 'LIKE', "%{$request->search}%");
+        $cargos = $query->get();
+        return response()->json($cargos);
+    }
 }
