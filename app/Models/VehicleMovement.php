@@ -52,7 +52,7 @@ class VehicleMovement extends Model
     }
 
     public function cargoDetail(){
-        return $this->hasMany(CargoDetail::class);
+        return $this->hasOne(CargoDetail::class);
     }
 
     public function weighReceipt(){
