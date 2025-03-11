@@ -25,7 +25,7 @@ class StoreVehicleImageRequest extends FormRequest
             "vehicle_movement_id" => "required|integer",
             "image_path" => "required|string",
             "remark" => "sometimes|nullable|string",
-            "uploaded_at" => "sometimes|nullable|datetime"
+            "uploaded_at" => "sometimes|nullable|date_format:Y-m-d H:i:s"
         ];
     }
 }

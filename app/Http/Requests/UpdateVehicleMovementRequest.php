@@ -28,7 +28,7 @@ class UpdateVehicleMovementRequest extends FormRequest
             'godown_id' => 'sometimes|nullable|integer',
             'type' => 'sometimes|string',
             'movement_type' => 'sometimes|string',
-            'movement_at' => 'sometimes|datetime',
+            'movement_at' => 'sometimes|date_format:Y-m-d H:i:s',
             'net_weight' => 'sometimes|nullable|numeric',
             'gross_weight' => 'sometimes|nullable|numeric',
             'tare_weight' => 'sometimes|nullable|numeric',
