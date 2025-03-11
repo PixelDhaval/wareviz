@@ -54,10 +54,11 @@ class CargoDetailController extends Controller
      */
     public function store(StoreCargoDetailRequest $request)
     {
-        CargoDetail::create($request->validated());
+        $cargoDetail = CargoDetail::create($request->validated());
         return response()->json([
             'status' => 200,
-            'message' => 'Cargo Detail Created Successfully'
+            'message' => 'Cargo Detail Created Successfully',
+            'data' => $cargoDetail->load('vehicleMovement')
         ]);
     }
 
@@ -77,7 +78,8 @@ class CargoDetailController extends Controller
         $cargoDetail->update($request->validated());
         return response()->json([
             'status' => 200,
-            'message' => 'Cargo Detail Updated Successfully'
+            'message' => 'Cargo Detail Updated Successfully',
+            'data' => $cargoDetail->load('vehicleMovement')
         ]);
     }
 

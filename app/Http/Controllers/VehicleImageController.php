@@ -54,10 +54,11 @@ class VehicleImageController extends Controller
      */
     public function store(StoreVehicleImageRequest $request)
     {
-        VehicleImage::create($request->validated());
+        $vehicleImage = VehicleImage::create($request->validated());
         return response()->json([
             'status' => 200,
-            'message' => 'Vehicle Image Created Successfully'
+            'message' => 'Vehicle Image Created Successfully',
+            'data' => $vehicleImage->load('vehicleMovement')
         ]);
     }
 
@@ -77,7 +78,8 @@ class VehicleImageController extends Controller
         $vehicleImage->update($request->validated());
         return response()->json([
             'status' => 200,
-            'message' => 'Vehicle Image Updated Successfully'
+            'message' => 'Vehicle Image Updated Successfully',
+            'data' => $vehicleImage->load('vehicleMovement')
         ]);
     }
 

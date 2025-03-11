@@ -58,7 +58,7 @@ class VehicleMovementController extends Controller
         return response()->json([
             'status' => 200,
             'message' => 'Vehicle Movement Created Successfully',
-            'data' => $vehicleMovement
+            'data' => $vehicleMovement->load('party', 'supplier', 'cargo', 'godown', 'cargoDetail', 'weighReceipt', 'vehicleImage', 'vehicleInspection')
         ]);
     }
 
@@ -78,7 +78,8 @@ class VehicleMovementController extends Controller
         $vehicleMovement->update($request->validated());
         return response()->json([
             'status' => 200,
-            'message' => 'Vehicle Movement Updated Successfully'
+            'message' => 'Vehicle Movement Updated Successfully',
+            'data' => $vehicleMovement->load('party', 'supplier', 'cargo', 'godown', 'cargoDetail', 'weighReceipt', 'vehicleImage', 'vehicleInspection')
         ]);
     }
 

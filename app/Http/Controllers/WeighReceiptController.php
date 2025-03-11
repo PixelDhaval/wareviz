@@ -54,10 +54,11 @@ class WeighReceiptController extends Controller
      */
     public function store(StoreWeighReceiptRequest $request)
     {
-        WeighReceipt::create($request->validated());
+        $weighReceipt = WeighReceipt::create($request->validated());
         return response()->json([
             'status' => 200,
-            'message' => 'Weigh Receipt Created Successfully'
+            'message' => 'Weigh Receipt Created Successfully',
+            'data' => $weighReceipt->load('vehicleMovement')
         ]);
     }
 
@@ -77,7 +78,8 @@ class WeighReceiptController extends Controller
         $weighReceipt->update($request->validated());
         return response()->json([
             'status' => 200,
-            'message' => 'Weigh Receipt Updated Successfully'
+            'message' => 'Weigh Receipt Updated Successfully',
+            'data' => $weighReceipt->load('vehicleMovement')
         ]);
     }
 

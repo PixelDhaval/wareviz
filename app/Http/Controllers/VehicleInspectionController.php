@@ -54,10 +54,11 @@ class VehicleInspectionController extends Controller
      */
     public function store(StoreVehicleInspectionRequest $request)
     {
-        VehicleInspection::create($request->validated());
+        $vehicleInspection = VehicleInspection::create($request->validated());
         return response()->json([
             'status' => 200,
-            'message' => 'Vehicle Inspection Created Successfully'
+            'message' => 'Vehicle Inspection Created Successfully',
+            'data' => $vehicleInspection->load('vehicleMovement')
         ]);
     }
 
@@ -77,7 +78,8 @@ class VehicleInspectionController extends Controller
         $vehicleInspection->update($request->validated());
         return response()->json([
             'status' => 200,
-            'message' => 'Vehicle Inspection Updated Successfully'
+            'message' => 'Vehicle Inspection Updated Successfully',
+            'data' => $vehicleInspection->load('vehicleMovement')
         ]);
     }
 
