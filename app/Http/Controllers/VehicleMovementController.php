@@ -54,10 +54,11 @@ class VehicleMovementController extends Controller
      */
     public function store(StoreVehicleMovementRequest $request)
     {
-        VehicleMovement::create($request->validated());
+        $vehicleMovement = VehicleMovement::create($request->validated());
         return response()->json([
             'status' => 200,
-            'message' => 'Vehicle Movement Created Successfully'
+            'message' => 'Vehicle Movement Created Successfully',
+            'data' => $vehicleMovement
         ]);
     }
 

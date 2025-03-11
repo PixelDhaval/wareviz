@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('party_id')->constrained('parties')->onDelete('cascade');
             $table->foreignId('supplier_id')->constrained('parties')->onDelete('cascade')->nullable();
             $table->foreignId('cargo_id')->constrained('cargos')->onDelete('cascade');
-            $table->foreignId('godown_id')->constrained('godowns')->onDelete('cascade');
+            $table->foreignId('godown_id')->constrained('godowns')->onDelete('cascade')->nullable();
             $table->enum('type', ['load', 'unload']);
             $table->enum('movement_type', ['vehicle', 'rail', ' godown_shifting', 'party_shifting', 'opening', 'shortage', 'excess']);
             $table->timestamp('movement_at');
