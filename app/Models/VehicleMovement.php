@@ -36,6 +36,8 @@ class VehicleMovement extends Model
         'ref_movement_id'
     ];
 
+    protected $with = ['party', 'supplier', 'cargo', 'godown', 'cargoDetail', 'weighReceipt', 'vehicleImage', 'vehicleInspection'];
+
     public function party(){
         return $this->belongsTo(Party::class);
     }
