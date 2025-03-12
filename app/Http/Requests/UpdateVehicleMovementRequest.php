@@ -43,7 +43,8 @@ class UpdateVehicleMovementRequest extends FormRequest
             'is_direct' => 'sometimes|nullable|boolean',
             'is_inspection' => 'sometimes|nullable|boolean',
             'receipt_no' => 'sometimes|nullable|string',
-            'receipt_date' => 'sometimes|nullable|date'
+            'receipt_date' => 'sometimes|nullable|date',
+            'ref_movement_id' => 'sometimes|nullable|integer|exists:vehicle_movements,id'
         ];
     }
 }

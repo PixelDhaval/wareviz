@@ -14,7 +14,7 @@ class VehicleMovementController extends Controller
      */
     public function index(Request $request)
     {
-        $query = VehicleMovement::query()->with('party', 'supplier', 'cargo', 'godown', 'cargoDetail', 'weighReceipt', 'vehicleImage', 'vehicleInspection');
+        $query = VehicleMovement::query()->with('party', 'supplier', 'cargo', 'godown', 'cargoDetail', 'weighReceipt', 'vehicleImage', 'vehicleInspection', 'refMovement');
 
         // **Filtering**
         $filters = $request->input('filters', []);
@@ -58,7 +58,7 @@ class VehicleMovementController extends Controller
         return response()->json([
             'status' => 200,
             'message' => 'Vehicle Movement Created Successfully',
-            'data' => $vehicleMovement->load('party', 'supplier', 'cargo', 'godown', 'cargoDetail', 'weighReceipt', 'vehicleImage', 'vehicleInspection')
+            'data' => $vehicleMovement->load('party', 'supplier', 'cargo', 'godown', 'cargoDetail', 'weighReceipt', 'vehicleImage', 'vehicleInspection', 'refMovement')
         ]);
     }
 
@@ -67,7 +67,7 @@ class VehicleMovementController extends Controller
      */
     public function show(VehicleMovement $vehicleMovement)
     {
-        return response()->json($vehicleMovement->load('party', 'supplier', 'cargo', 'godown', 'cargoDetail', 'weighReceipt', 'vehicleImage', 'vehicleInspection'));
+        return response()->json($vehicleMovement->load('party', 'supplier', 'cargo', 'godown', 'cargoDetail', 'weighReceipt', 'vehicleImage', 'vehicleInspection', 'refMovement'));
     }
 
     /**
@@ -79,7 +79,7 @@ class VehicleMovementController extends Controller
         return response()->json([
             'status' => 200,
             'message' => 'Vehicle Movement Updated Successfully',
-            'data' => $vehicleMovement->load('party', 'supplier', 'cargo', 'godown', 'cargoDetail', 'weighReceipt', 'vehicleImage', 'vehicleInspection')
+            'data' => $vehicleMovement->load('party', 'supplier', 'cargo', 'godown', 'cargoDetail', 'weighReceipt', 'vehicleImage', 'vehicleInspection', 'refMovement')
         ]);
     }
 

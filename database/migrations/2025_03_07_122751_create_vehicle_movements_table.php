@@ -35,6 +35,7 @@ return new class extends Migration
             $table->boolean('is_inspection')->default(false);
             $table->string('receipt_no')->nullable();
             $table->string('receipt_date')->nullable();
+            $table->foreignId('ref_movement_id')->constrained('vehicle_movements')->onDelete('cascade')->nullable();
             $table->timestamps();
         });
     }

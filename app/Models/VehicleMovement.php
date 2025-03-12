@@ -33,6 +33,7 @@ class VehicleMovement extends Model
         'is_inspection',
         'receipt_no',
         'receipt_date',
+        'ref_movement_id'
     ];
 
     public function party(){
@@ -65,5 +66,9 @@ class VehicleMovement extends Model
 
     public function vehicleInspection(){
         return $this->hasMany(VehicleInspection::class);
+    }
+
+    public function refMovement(){
+        return $this->belongsTo(VehicleMovement::class, 'ref_movement_id');
     }
 }
