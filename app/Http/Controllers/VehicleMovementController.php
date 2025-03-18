@@ -32,7 +32,6 @@ class VehicleMovementController extends Controller
                     } else {
                         $query->where($key, 'LIKE', "%$value%");
                     }
-                    $query->where($key, 'LIKE', "%$value%");
                 } 
             }
         }
