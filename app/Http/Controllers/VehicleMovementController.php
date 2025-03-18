@@ -21,8 +21,17 @@ class VehicleMovementController extends Controller
         foreach ($filters as $key => $value) {
             if ($value) {
                 if($key == 'party_id' || $key == 'supplier_id' || $key == 'cargo_id' || $key == 'godown_id'){
-                    $query->where($key, "=", $value);
+                    if(typeOf($value) == 'array'){
+                        $query->whereIn($key, $value);
+                    } else {
+                        $query->where($key, "=", $value);
+                    }
                 } else {
+                    if(typeOf($value) == 'array'){
+                        $query->whereIn($key, $value);
+                    } else {
+                        $query->where($key, 'LIKE', "%$value%");
+                    }
                     $query->where($key, 'LIKE', "%$value%");
                 } 
             }
