@@ -48,7 +48,7 @@ class VehicleMovementController extends Controller
         $query->orderBy($sortBy, $order);
 
         // **Pagination**
-        if($request->input('paginate') && $request->input('paginate') == false){
+        if($request->input('paginate') == false){
             $parties = $query->get();
         } else {
             $perPage = $request->input('perPage', 10); // Default 10 per page
