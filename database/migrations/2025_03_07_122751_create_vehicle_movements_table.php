@@ -36,6 +36,13 @@ return new class extends Migration
             $table->string('receipt_no')->nullable();
             $table->string('receipt_date')->nullable();
             $table->foreignId('ref_movement_id')->constrained('vehicle_movements')->onDelete('cascade')->nullable();
+            $table->string('vessel_name')->nullable();
+            $table->date('vessel_date')->nullable();
+            $table->string('loading_port')->nullable();
+            $table->date('loading_country')->nullable();
+            $table->string('shipment_type')->nullable();
+            $table->string('container_type')->nullable();
+            $table->integer('container_no')->nullable();
             $table->timestamps();
         });
     }

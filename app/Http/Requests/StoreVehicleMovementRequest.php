@@ -44,7 +44,14 @@ class StoreVehicleMovementRequest extends FormRequest
             'is_inspection' => 'sometimes|nullable|boolean',
             'receipt_no' => 'sometimes|nullable|string',
             'receipt_date' => 'sometimes|nullable|date',
-            'ref_movement_id' => 'sometimes|nullable|integer|exists:vehicle_movements,id'
+            'ref_movement_id' => 'sometimes|nullable|integer|exists:vehicle_movements,id',
+            'vessel_name' => 'sometimes|nullable|string',
+            'vessel_date' => 'sometimes|nullable|date',
+            'loading_port' => 'sometimes|nullable|string',
+            'loading_country' => 'sometimes|nullable|string',
+            'shipment_type' => 'sometimes|nullable|string',
+            'container_type' => 'sometimes|nullable|string',
+            'container_no' => 'sometimes|nullable|integer',
         ];
     }
 }

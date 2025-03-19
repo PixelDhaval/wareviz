@@ -58,7 +58,7 @@ class VehicleInspectionController extends Controller
         return response()->json([
             'status' => 200,
             'message' => 'Vehicle Inspection Created Successfully',
-            'data' => $vehicleInspection->load('vehicleMovement')
+            'data' => $vehicleInspection->load('vehicleMovement'),
         ]);
     }
 

@@ -33,7 +33,14 @@ class VehicleMovement extends Model
         'is_inspection',
         'receipt_no',
         'receipt_date',
-        'ref_movement_id'
+        'ref_movement_id',
+        'vessel_name',
+        'vessel_date',
+        'loading_port',
+        'loading_country',
+        'shipment_type',
+        'container_type',
+        'container_no',
     ];
 
     protected $with = ['party', 'supplier', 'cargo', 'godown', 'cargoDetail', 'weighReceipt', 'vehicleImage', 'vehicleInspection'];
