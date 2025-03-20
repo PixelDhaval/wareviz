@@ -20,7 +20,7 @@ class VehicleMovementController extends Controller
         $filters = $request->input('filters', []);
         foreach ($filters as $key => $value) {
             if ($value) {
-                if($key == 'party_id' || $key == 'supplier_id' || $key == 'cargo_id' || $key == 'godown_id'){
+                if($key == 'party_id' || $key == 'supplier_id' || $key == 'cargo_id' || $key == 'godown_id' || $key == 'type'){
                     if(gettype($value) == 'array'){
                         $query->whereIn($key, $value);
                     } else {
