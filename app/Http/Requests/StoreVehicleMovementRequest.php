@@ -28,7 +28,7 @@ class StoreVehicleMovementRequest extends FormRequest
             'godown_id' => 'sometimes|nullable|integer',
             'type' => 'required|string',
             'movement_type' => 'required|string',
-            'movement_at' => 'required|date_format:Y-m-d H:i:s',
+            'movement_at' => 'required|date_format:Y-m-d',
             'net_weight' => 'sometimes|nullable|numeric',
             'gross_weight' => 'sometimes|nullable|numeric',
             'tare_weight' => 'sometimes|nullable|numeric',
