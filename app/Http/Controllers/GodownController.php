@@ -72,6 +72,7 @@ class GodownController extends Controller
         return response()->json([
             'status' => 200,
             'message' => 'Godown Updated Successfully',
+            'data' => $godown
         ]);
     }
 

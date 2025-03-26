@@ -54,10 +54,11 @@ class PartyController extends Controller
      */
     public function store(StorePartyRequest $request)
     {
-        Party::create($request->validated());
+        $party = Party::create($request->validated());
         return response()->json([
             'status' => 200,
             'message' => 'Party Created Successfully',
+            'data' => $party
         ]);
     }
 
