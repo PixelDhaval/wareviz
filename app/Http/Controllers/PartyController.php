@@ -80,7 +80,7 @@ class PartyController extends Controller
         return response()->json([
             'status' => 200,
             'message' => 'Party Updated Successfully',
-            'party' => $party
+            'data' => $party
         ]);
     }
 
