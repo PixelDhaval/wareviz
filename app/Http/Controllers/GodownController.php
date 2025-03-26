@@ -47,10 +47,11 @@ class GodownController extends Controller
      */
     public function store(StoreGodownRequest $request)
     {
-        Godown::create($request->validated());
+        $godown = Godown::create($request->validated());
         return response()->json([
             'status' => 200,
             'message' => 'Godown Created Successfully',
+            'data' => $godown
         ]);
     }
 
