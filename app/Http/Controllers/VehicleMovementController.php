@@ -26,6 +26,10 @@ class VehicleMovementController extends Controller
                     } else {
                         $query->where($key, "=", $value);
                     }
+                } else if ($key == "from_movement_at"){
+                    $query->where($key, '>=', $value);
+                } else if ($key == "to_movement_at"){
+                    $query->where($key, '<=', $value);
                 } else {
                     if(gettype($value) == 'array'){
                         $query->whereIn($key, $value);
